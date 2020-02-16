@@ -3,6 +3,8 @@
 #include <string>
 #include "start.h"
 #include <vector>
+#include <sstream> 
+
 
 using namespace std;
 
@@ -105,6 +107,49 @@ void displayStudent(){
 
 }
 void gradeStudent(){
-    cout << "grade data " <<endl;
+    cout << "Student grading " <<endl;
+    string searchGrade;
+    string searchNo;
+    bool found=false;
+    cout << "--------------------"<<endl ;
+
+    cout << "Enter Student number to be graded: ";
+    getline (cin,searchNo);
+    for (auto &student : vectorArray) // & copies by reference
+    {  
+        if(student.sNumber==searchNo){
+            searchGrade=student.classRecord;
+            found=true;
+
+        }
+
+    }
+    if(found==false){
+        cout << "Could not find "<<searchNo<<" in the database"<<endl ;
+    }
+    string word = ""; 
+    int avg=0;
+    int count=0;
+    for (auto x : searchGrade) 
+    { 
+       if (x == ' ') 
+       { 
+            stringstream geek(word);
+            int x=0;
+            geek>>x;
+            avg=avg+x;
+           word = ""; 
+           count++;
+       } 
+       else
+       { 
+           word = word + x; 
+       } 
+   }  
+    stringstream geek(word);
+    int x=0;
+    geek>>x;
+    avg=avg+x;
+    cout <<"The average for "<<searchNo<<" is: "<< (float)avg/(float)(count+1)<< endl;
 
 }
