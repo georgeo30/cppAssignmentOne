@@ -1,7 +1,8 @@
 #include <iostream>
 #include <string>
-using namespace std;
+#include <vector>
 
+using namespace std;
 void cScreen(){
         system("clear"); 
 
@@ -11,4 +12,8 @@ void readData();
 void saveData();
 void displayStudent();
 void gradeStudent();
+struct StudentRecord{
+    std::string fname, sname, sNumber,classRecord;
+};
 
+vector<StudentRecord> vectorArray;
