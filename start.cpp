@@ -4,6 +4,7 @@
 #include "start.h"
 #include <vector>
 #include <sstream> 
+#include <fstream>
 
 
 using namespace std;
@@ -73,11 +74,54 @@ void addStudent(){
 }
 void readData(){
     cout << "read data "<<endl ;
+    vectorArray.clear();
     for (auto &student : vectorArray) // & copies by reference
     {  
         cout << student.fname<<student.sname<<student.sNumber<<student.classRecord<<endl;
 
     }
+
+    std::ifstream file("database.txt");
+    if (file.is_open()) {
+    std::string line;
+    while (getline(file, line)) {
+        // using printf() in all tests for consistency
+        // cout<<line.c_str()<<endl;
+        string word = ""; 
+        string l=line.c_str();
+        struct StudentRecord newStudent;
+        vector<string> tempVector;
+        string arr[4];
+        int tr=0;
+        for (auto x : l) 
+        { 
+            if (x == ';') 
+            { 
+                //cout << word << endl; 
+                tempVector.push_back(word);
+                word = ""; 
+                
+                
+            } 
+            else
+            { 
+                word = word + x; 
+            } 
+        }  
+        //cout << word << endl; 
+        newStudent.fname=tempVector.at(0);
+        newStudent.sname=tempVector.at(1);
+        newStudent.sNumber=tempVector.at(2);
+        newStudent.classRecord=tempVector.at(3);
+        vectorArray.push_back(newStudent);
+
+        
+        
+        
+       
+    }
+    file.close();
+}
 
 }
 void saveData(){
@@ -119,15 +163,7 @@ void gradeStudent(){
     {  
         if(student.sNumber==searchNo){
             searchGrade=student.classRecord;
-            found=true;
-
-        }
-
-    }
-    if(found==false){
-        cout << "Could not find "<<searchNo<<" in the database"<<endl ;
-    }
-    string word = ""; 
+            string word = ""; 
     int avg=0;
     int count=0;
     for (auto x : searchGrade) 
@@ -151,5 +187,15 @@ void gradeStudent(){
     geek>>x;
     avg=avg+x;
     cout <<"The average for "<<searchNo<<" is: "<< (float)avg/(float)(count+1)<< endl;
+            found=true;
+
+
+        }
+
+    }
+    if(found==false){
+        cout << "Could not find "<<searchNo<<" in the database"<<endl ;
+    }
+    
 
 }
