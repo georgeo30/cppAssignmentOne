@@ -92,11 +92,27 @@ void readData(){
 
     cout << "* Database successfully read *"<<endl ;
              cout<<"*******************************"<<endl;
+             string view;
+             cout<<"Would you like to view the database you just imported? (Y/N)"<<endl;
+             getline(cin,view);
+             if(view=="Y"){
+                 cout<<"Student No | FName | SName | CRecord"<<endl;
+                 for(auto &student : vectorArray){
+                                    cout <<student.sNumber<<" | "<< student.fname<<" | "<<student.sname<<" | "<<student.classRecord<<" | "<<endl ;
+
+                 }
+             }
+             else{
+                 cout<<"Going to home page..."<<endl;
+             }
+
+
 
 }
 
 }
 void saveData(){
+    
     cout << "Saving data... "<<endl ;
     
     ofstream newFile("database.txt");
