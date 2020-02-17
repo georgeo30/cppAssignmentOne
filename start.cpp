@@ -112,7 +112,6 @@ void readData(){
         vectorArray.push_back(newStudent);
 
         
-
         
         
        
