@@ -66,12 +66,25 @@ void addStudent(){
     getline (cin,newStudent.sname);
     cout << "Enter Student Number: ";
     getline (cin,newStudent.sNumber);
-    cout << "Enter class record: ";
-    getline (cin,newStudent.classRecord);
-    vectorArray.push_back(newStudent);
-    cout<<"***************************************"<<endl;
-    cout << "* Successfully added student "<<newStudent.sNumber<<"*"<<endl ;
-    cout<<"***************************************"<<endl;
+    bool inDb=false;
+    for(auto &student : vectorArray){
+        if(student.sNumber==newStudent.sNumber){
+            inDb=true;
+        }
+        else{}
+    }
+    if(inDb==false){
+        cout << "Enter class record: ";
+        getline (cin,newStudent.classRecord);
+        vectorArray.push_back(newStudent);
+        cout<<"***************************************"<<endl;
+        cout << "* Successfully added student "<<newStudent.sNumber<<"*"<<endl ;
+        cout<<"***************************************"<<endl;
+    }
+    else{
+        cout<<"The student you are trying to add is already in the database.\nExited without saving!"<<endl;
+        
+    }
 
 
 }
