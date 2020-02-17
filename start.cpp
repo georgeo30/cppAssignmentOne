@@ -26,20 +26,20 @@ int main ()
 
     if(mystr=="0")
     {
-            addStudent();
+            THNGEO002::addStudent();
     }
     else if(mystr=="1"){
-        readData();
+        THNGEO002::readData();
     }
     else if(mystr=="2"){
-        saveData();
+        THNGEO002::saveData();
     }
     else if(mystr=="3"){
-        displayStudent();
+        THNGEO002::displayStudent();
     }
     
     else if(mystr=="4"){
-        gradeStudent();
+        THNGEO002::gradeStudent();
     }
     else
     {
@@ -50,11 +50,15 @@ int main ()
   }
   if(mystr=="q"){
     
-      cScreen();
+      THNGEO002::cScreen();
   }
   return 0;
 }
+namespace THNGEO002{
+void cScreen(){
+    system("clear"); 
 
+}
 void addStudent(){
     cout << "Add student data "<<endl ;
     cout << "-----------------"<<endl ;
@@ -238,4 +242,5 @@ void gradeStudent(){
     }
     
 
+}
 }

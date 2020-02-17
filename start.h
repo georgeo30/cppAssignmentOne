@@ -1,19 +1,27 @@
+#ifndef start
+#define start
+
 #include <iostream>
 #include <string>
 #include <vector>
 
-using namespace std;
-void cScreen(){
-        system("clear"); 
+//using namespace std;
+namespace THNGEO002{
+    //class myclass{
+       // public:
+       struct StudentRecord{
+                std::string fname, sname, sNumber,classRecord;
+            };
+       std::vector<StudentRecord> vectorArray;
+            void cScreen();
+            void addStudent();
+            void readData();
+            void saveData();
+            void displayStudent();
+            void gradeStudent();
+            
 
-};
-void addStudent();
-void readData();
-void saveData();
-void displayStudent();
-void gradeStudent();
-struct StudentRecord{
-    std::string fname, sname, sNumber,classRecord;
-};
-
-vector<StudentRecord> vectorArray;
+            
+    //};
+}
+#endif
